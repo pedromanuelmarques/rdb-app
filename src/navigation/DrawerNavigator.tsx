@@ -1,19 +1,20 @@
 import React from 'react';
 import {
-  View, Text, TouchableOpacity, StyleSheet, ScrollView, StatusBar,
+  View, Text, TouchableOpacity, StyleSheet, ScrollView,
 } from 'react-native';
 import {
   createDrawerNavigator,
   DrawerContentComponentProps,
+  DrawerNavigationProp,
 } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
-import { DrawerNavigationProp } from '@react-navigation/drawer';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { HomeScreen } from '../screens/HomeScreen';
 import { CategoryScreen } from '../screens/CategoryScreen';
 import { ArticleScreen } from '../screens/ArticleScreen';
 import { SearchScreen } from '../screens/SearchScreen';
-import { RootStackParamList } from '../types';
+import { RootStackParamList, DrawerParamList } from '../types';
 import { colors, spacing, fontSize } from '../theme';
 
 const CATEGORIES = [
@@ -32,16 +33,16 @@ const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator<RootStackParamList>();
 
 function AppHeader() {
-  const nav = useNavigation<DrawerNavigationProp<any>>();
+  const nav = useNavigation<DrawerNavigationProp<DrawerParamList>>();
+  const insets = useSafeAreaInsets();
   return (
-    <View style={styles.header}>
-      <StatusBar barStyle="light-content" backgroundColor={colors.header} />
+    <View style={[styles.header, { paddingTop: insets.top }]}>
       <TouchableOpacity onPress={() => nav.openDrawer()} style={styles.headerBtn}>
         <Text style={styles.headerIcon}>☰</Text>
       </TouchableOpacity>
       <Text style={styles.headerTitle}>RUA DE BAIXO</Text>
       <TouchableOpacity
-        onPress={() => nav.navigate('HomeStack' as never, { screen: 'Search' } as never)}
+        onPress={() => nav.navigate('HomeStack', { screen: 'Search' })}
         style={styles.headerBtn}
       >
         <Text style={styles.headerIcon}>🔍</Text>
@@ -64,12 +65,12 @@ function CustomDrawerContent({ navigation }: DrawerContentComponentProps) {
             onPress={() => {
               navigation.closeDrawer();
               if (cat.id === 0) {
-                navigation.navigate('HomeStack' as never, { screen: 'Home' } as never);
+                navigation.navigate('HomeStack', { screen: 'Home' });
               } else {
-                navigation.navigate('HomeStack' as never, {
+                navigation.navigate('HomeStack', {
                   screen: 'Category',
                   params: { categoryId: cat.id, categoryName: cat.name },
-                } as never);
+                });
               }
             }}
           >
@@ -109,7 +110,7 @@ export function DrawerNavigator() {
 const styles = StyleSheet.create({
   header: {
     backgroundColor: colors.header,
-    height: 56,
+    minHeight: 56,
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: spacing.sm,

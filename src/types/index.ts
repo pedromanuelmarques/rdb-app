@@ -29,3 +29,9 @@ export type RootStackParamList = {
   Article: { postId: number; categoryName: string };
   Search: undefined;
 };
+
+import type { NavigatorScreenParams } from '@react-navigation/native';
+
+export type DrawerParamList = {
+  HomeStack: NavigatorScreenParams<RootStackParamList>;
+};
