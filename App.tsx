@@ -11,8 +11,8 @@ export default function App() {
   useEffect(() => {
     const appId = Constants.expoConfig?.extra?.oneSignalAppId as string | undefined;
     if (appId && appId !== 'REPLACE_WITH_YOUR_ONESIGNAL_APP_ID') {
-      OneSignal.setAppId(appId);
-      OneSignal.promptForPushNotificationsWithUserResponse();
+      OneSignal.initialize(appId);
+      OneSignal.Notifications.requestPermission(true);
     }
   }, []);
 
