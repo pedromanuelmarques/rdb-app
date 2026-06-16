@@ -3,9 +3,14 @@ import { Post, Category } from '../types';
 const BASE = 'https://www.ruadebaixo.com/wp-json/wp/v2';
 
 async function get<T>(url: string): Promise<T> {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`API error: ${res.status}`);
-  return res.json() as Promise<T>;
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`API error: ${res.status}`);
+    return res.json() as Promise<T>;
+  } catch (error) {
+    if (error instanceof Error && error.message.startsWith('API error')) throw error;
+    throw new Error(`Network error: ${error instanceof Error ? error.message : 'unknown'}`);
+  }
 }
 
 export const fetchPosts = (page = 1): Promise<Post[]> =>
