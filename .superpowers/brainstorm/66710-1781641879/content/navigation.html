@@ -1,0 +1,84 @@
+<h2>Navegação com Hamburger Menu</h2>
+<p class="subtitle">Duas opções de layout — qual preferes?</p>
+
+<div class="options" style="margin-top:24px;">
+
+  <div class="option" data-choice="drawer-full" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <h3>Drawer lateral + tab bar mínima</h3>
+      <div style="display:flex;gap:16px;margin-top:12px;align-items:flex-start;">
+        <!-- Phone: home state -->
+        <div style="width:120px;border:2px solid #333;border-radius:12px;overflow:hidden;background:white;box-shadow:0 2px 8px rgba(0,0,0,0.12);flex-shrink:0;">
+          <div style="background:#1a1a1a;height:22px;display:flex;align-items:center;padding:0 8px;justify-content:space-between;">
+            <span style="color:white;font-size:12px;">☰</span>
+            <span style="color:white;font-size:7px;font-weight:700;letter-spacing:1px;">RUA DE BAIXO</span>
+            <span style="color:white;font-size:10px;">🔍</span>
+          </div>
+          <div style="padding:6px;">
+            <div style="height:55px;background:linear-gradient(135deg,#ddd,#bbb);border-radius:3px;margin-bottom:5px;display:flex;align-items:flex-end;padding:3px;">
+              <span style="font-size:7px;font-weight:700;">Destaque</span>
+            </div>
+            <div style="display:flex;gap:3px;margin-bottom:5px;">
+              <div style="flex:1;height:35px;background:#f0f0f0;border-radius:3px;"></div>
+              <div style="flex:1;height:35px;background:#f0f0f0;border-radius:3px;"></div>
+              <div style="flex:1;height:35px;background:#f0f0f0;border-radius:3px;"></div>
+            </div>
+            <div style="height:22px;background:#f8f8f8;border-radius:3px;"></div>
+            <div style="height:22px;background:#f8f8f8;border-radius:3px;margin-top:3px;"></div>
+          </div>
+        </div>
+        <!-- Arrow -->
+        <div style="font-size:20px;color:#ccc;margin-top:30px;">→</div>
+        <!-- Phone: drawer open -->
+        <div style="width:120px;border:2px solid #333;border-radius:12px;overflow:hidden;background:white;box-shadow:0 2px 8px rgba(0,0,0,0.12);flex-shrink:0;position:relative;">
+          <div style="background:#1a1a1a;height:22px;display:flex;align-items:center;padding:0 8px;">
+            <span style="color:white;font-size:12px;">✕</span>
+          </div>
+          <!-- Drawer overlay -->
+          <div style="display:flex;height:140px;">
+            <div style="width:85px;background:#1a1a1a;padding:6px 0;flex-shrink:0;">
+              <div style="color:white;font-size:7px;padding:4px 8px;border-left:2px solid #0066CC;">🏠 Home</div>
+              <div style="color:#aaa;font-size:7px;padding:4px 8px;border-bottom:1px solid #333;">🎵 Música</div>
+              <div style="color:#aaa;font-size:7px;padding:4px 8px;border-bottom:1px solid #333;">🎬 Cinema</div>
+              <div style="color:#aaa;font-size:7px;padding:4px 8px;border-bottom:1px solid #333;">👗 Moda</div>
+              <div style="color:#aaa;font-size:7px;padding:4px 8px;border-bottom:1px solid #333;">🎨 Artes</div>
+              <div style="color:#aaa;font-size:7px;padding:4px 8px;border-bottom:1px solid #333;">📚 Livros</div>
+              <div style="color:#aaa;font-size:7px;padding:4px 8px;">··· mais</div>
+            </div>
+            <div style="flex:1;background:rgba(0,0,0,0.4);"></div>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:10px;font-size:13px;color:#555;">☰ no canto esquerdo do header. Pesquisa 🔍 no canto direito. Sem tab bar. Toda a nav no drawer.</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="hybrid" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>Hamburger + tab bar Home/Pesquisa</h3>
+      <div style="display:flex;gap:16px;margin-top:12px;align-items:flex-start;">
+        <div style="width:120px;border:2px solid #333;border-radius:12px;overflow:hidden;background:white;box-shadow:0 2px 8px rgba(0,0,0,0.12);flex-shrink:0;">
+          <div style="background:#1a1a1a;height:22px;display:flex;align-items:center;padding:0 8px;justify-content:space-between;">
+            <span style="color:white;font-size:12px;">☰</span>
+            <span style="color:white;font-size:7px;font-weight:700;letter-spacing:1px;">RUA DE BAIXO</span>
+            <span style="color:white;font-size:9px;">🔔</span>
+          </div>
+          <div style="padding:6px;">
+            <div style="height:55px;background:linear-gradient(135deg,#ddd,#bbb);border-radius:3px;margin-bottom:5px;"></div>
+            <div style="height:22px;background:#f8f8f8;border-radius:3px;margin-bottom:3px;"></div>
+            <div style="height:22px;background:#f8f8f8;border-radius:3px;margin-bottom:3px;"></div>
+            <div style="height:22px;background:#f8f8f8;border-radius:3px;"></div>
+          </div>
+          <div style="background:#f8f8f8;border-top:1px solid #eee;display:flex;justify-content:space-around;padding:5px 0;">
+            <div style="text-align:center;"><div style="font-size:12px;">🏠</div><div style="font-size:6px;color:#0066CC;font-weight:600;">Home</div></div>
+            <div style="text-align:center;"><div style="font-size:12px;">🔍</div><div style="font-size:6px;color:#999;">Pesquisa</div></div>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:10px;font-size:13px;color:#555;">Tab bar com apenas 2 itens (Home + Pesquisa). Categorias todas no drawer. Ícone de notificações no header.</p>
+    </div>
+  </div>
+
+</div>
