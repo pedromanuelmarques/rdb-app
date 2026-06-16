@@ -1,20 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+import React, { useEffect } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import OneSignal from 'react-native-onesignal';
+import Constants from 'expo-constants';
+import { DrawerNavigator } from './src/navigation/DrawerNavigator';
 
 export default function App() {
+  useEffect(() => {
+    const appId = Constants.expoConfig?.extra?.oneSignalAppId as string | undefined;
+    if (appId && appId !== 'REPLACE_WITH_YOUR_ONESIGNAL_APP_ID') {
+      OneSignal.setAppId(appId);
+      OneSignal.promptForPushNotificationsWithUserResponse();
+    }
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <DrawerNavigator />
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
