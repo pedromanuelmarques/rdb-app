@@ -23,7 +23,7 @@
       "package": "com.ruadebaixo.app"
     },
     "extra": {
-      "oneSignalAppId": "REPLACE_WITH_YOUR_ONESIGNAL_APP_ID"
+      "oneSignalAppId": "583e9661-6784-427a-adba-f72cb1d9e9c7"
     },
     "plugins": [
       [
